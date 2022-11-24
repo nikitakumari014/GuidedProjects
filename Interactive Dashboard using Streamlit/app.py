@@ -3,11 +3,9 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-#titles
 st.title('Sentiment Analysis')
 st.sidebar.title('Sentiment Analysis')
 
-#markdowns
 st.markdown('Sentimemnt Analysis of tweets about US Airlines 🐦')
 st.sidebar.markdown('Sentimemnt Analysis of tweets about US Airlines 🐦 ')
 
@@ -32,7 +30,7 @@ st.sidebar.markdown(data.query('airline_sentiment == @random_tweet')[["text"]].s
 
 #visalization
 st.sidebar.markdown("### Number of tweets by sentiments")
-select= st.sidebar.selectbox('Visualization',['Histogram','Pi Chart'], key=1)
+select= st.sidebar.selectbox('Visualization',['Histogram','Pie Chart'], key=2)
 
 #newdataframe
 sentiment_count= data['airline_sentiment'].value_counts()
@@ -50,7 +48,7 @@ else:
 	st.plotly_chart(fig)
 
 
-st.sidebar.subheader("when and where are our users twitting from?")
+st.sidebar.subheader("When and Where are our users twitting from?")
 hour=st.sidebar.slider('Hour of day',0,23)
 modified_data=data[data['tweet_created'].dt.hour == hour]
 if not st.sidebar.checkbox('close',True, key=1):
